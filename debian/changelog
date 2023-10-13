@@ -1,8 +1,8 @@
-haskell-semigroupoids (5.3.4-deepin1) unstable; urgency=medium
+haskell-semigroupoids (5.3.7-1) unstable; urgency=medium
 
-  * Rebuild
+  * New upstream version.
 
- -- Deepin Packages Builder <packages@deepin.org>  Mon, 14 Nov 2022 17:40:59 +0800
+ -- Clint Adams <clint@debian.org>  Thu, 16 Jun 2022 21:36:01 -0400
 
 haskell-semigroupoids (5.3.4-1) unstable; urgency=medium
 

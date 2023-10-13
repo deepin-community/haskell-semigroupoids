@@ -1,3 +1,48 @@
+5.3.7 [2022.01.09]
+------------------
+* Relax the `Bind` constraints in the following instances to `Functor`:
+
+  ```diff
+  -instance (Bind f,    Monad f) => Alt  (MaybeT f)
+  -instance (Bind f,    Monad f) => Plus (MaybeT f)
+  +instance (Functor f, Monad f) => Alt  (MaybeT f)
+  +instance (Functor f, Monad f) => Plus (MaybeT f)
+
+  -instance (Bind f,    Monad f, Semigroup e)           => Alt  (ExceptT e f)
+  -instance (Bind f,    Monad f, Semigroup e, Monoid e) => Plus (ExceptT e f)
+  +instance (Functor f, Monad f, Semigroup e)           => Alt  (ExceptT e f)
+  +instance (Functor f, Monad f, Semigroup e, Monoid e) => Plus (ExceptT e f)
+
+   -- If building with transformers-0.5.* or older
+  -instance (Bind f,    Monad f)          => Alt  (ErrorT e f)
+  -instance (Bind f,    Monad f, Error e) => Plus (ErrorT e f
+  +instance (Functor f, Monad f)          => Alt  (ErrorT e f)
+  +instance (Functor f, Monad f, Error e) => Plus (ErrorT e f)
+  ```
+
+5.3.6 [2021.10.07]
+------------------
+* Allow building with GHC 9.2.
+* Allow building with `transformers-0.6.*`.
+* Add `Alt` instance for `Identity`.
+* Add `Conclude`, `Decide` and `Divise` type classes and instances.
+* Add `(<.*>)`, `(<*.>)`, and `traverseMaybe` functions, which make it easier
+  to defined `Traversable1` instances for data types that have fields with a
+  combination of `Traversable` and `Traversable1` instances.
+* Add `Semigroupoids.Do` module with overloads for use with `QualifiedDo`.
+* Add `Apply`, `Alt`, `Plus`, `Bind` and `BindTrans` instances for the CPS
+  versions of `WriterT` and `RWST`.
+* Add `psum` function to `Data.Functor.Plus`.
+* Add `Categorical` data type.
+
+5.3.5 [2020.12.31]
+------------------
+* The build-type has been changed from `Custom` to `Simple`.
+  To achieve this, the `doctests` test suite has been removed in favor of using
+  [`cabal-docspec`](https://github.com/phadej/cabal-extras/tree/master/cabal-docspec)
+  to run the doctests.
+* Explicitly mark modules as `Safe`.
+
 5.3.4 [2019.11.26]
 ------------------
 * Achieve forward compatibility with
